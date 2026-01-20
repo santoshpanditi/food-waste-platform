@@ -61,38 +61,46 @@ export const ImpactDashboard: React.FC = () => {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1>🇮🇳 Impact Dashboard - BharatSecure</h1>
-        <p>Real-time metrics showing our collective impact on food waste reduction in India</p>
+        <h1>🇮🇳 Impact Dashboard</h1>
+        <p>Real-time metrics showing our collective impact on food waste reduction across India</p>
       </div>
 
       <div className="stats-grid">
         <div className="stat-card">
+          <div className="stat-icon">♻️</div>
           <div className="stat-value" style={{ color: '#667eea' }}>
             {totalMetrics.co2Saved.toFixed(1)}
           </div>
-          <div className="stat-label">CO₂ Saved (kg)</div>
+          <div className="stat-label">CO₂ Saved</div>
+          <div className="stat-unit">kg</div>
           <div className="stat-subtext">Environmental impact</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">🍽️</div>
           <div className="stat-value" style={{ color: '#764ba2' }}>
             {totalMetrics.mealsProvided}
           </div>
           <div className="stat-label">Meals Provided</div>
+          <div className="stat-unit">servings</div>
           <div className="stat-subtext">Food distributed across India</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">👥</div>
           <div className="stat-value" style={{ color: '#f093fb' }}>
             {totalMetrics.recipientsBenefited}
           </div>
           <div className="stat-label">People Helped</div>
-          <div className="stat-subtext">Indians served</div>
+          <div className="stat-unit">Indians served</div>
+          <div className="stat-subtext">Community impact</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">💰</div>
           <div className="stat-value" style={{ color: '#28A745' }}>
             ₹{totalMetrics.monetaryValue.toLocaleString('en-IN')}
           </div>
           <div className="stat-label">Donation Value</div>
-          <div className="stat-subtext">INR value donated</div>
+          <div className="stat-unit">INR</div>
+          <div className="stat-subtext">Market value of food</div>
         </div>
       </div>
 
