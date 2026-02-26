@@ -35,9 +35,9 @@ export const AuthPage: React.FC<LoginProps> = ({ isRegister = false }) => {
     <div className="auth-container">
       <div className="auth-box">
         <div className="auth-header">
-          <h1>�🇳 BharatSecure</h1>
+          <h1>Food Waste Platform</h1>
           <p>Reduce Food Waste, Improve Food Security in India</p>
-        </div>
+          </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
           <h2>{isReg ? 'Create Account' : 'Login'}</h2>
