@@ -115,13 +115,7 @@ export const AuthPage: React.FC<LoginProps> = ({ isRegister = false }) => {
           </p>
         </form>
 
-        <div className="demo-credentials">
-          <p>Demo Credentials (Indian Organizations):</p>
-          <small>Donor: haryana@greenfarmsindian.com / 123456</small>
-          <small>Recipient: delhi@foodbankindia.org / 123456</small>
-          <small>Admin: admin@bharatsecure.gov / 123456</small>
-          <small>Analyst: analyst@ngo-india.org / 123456</small>
-        </div>
+       
       </div>
     </div>
   );
