@@ -35,7 +35,7 @@ export const AuthPage: React.FC<LoginProps> = ({ isRegister = false }) => {
     <div className="auth-container">
       <div className="auth-box">
         <div className="auth-header">
-          <h1>Food Waste Platform</h1>
+          <h1>Food Waste Reduction Platform</h1>
           <p>Reduce Food Waste, Improve Food Security in India</p>
           </div>
 
