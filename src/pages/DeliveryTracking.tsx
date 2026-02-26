@@ -11,9 +11,17 @@ export const DeliveryTracking: React.FC = () => {
   // Get deliveries for user's role
   const userDeliveries = deliveries.filter(d => {
     const claim = claims.find(c => c.id === d.claimId);
+    if (!claim) return false;
+    const listing = listings.find(l => l.id === claim.listingId);
+
     if (user?.role === 'donor') {
-      return claim && claim.id === d.claimId;
+      return listing?.donorId === user.id || listing?.donorName === user.organizationName;
     }
+
+    if (user?.role === 'recipient') {
+      return claim.recipientId === user.id || claim.recipientName === user.organizationName;
+    }
+
     return true;
   });
 

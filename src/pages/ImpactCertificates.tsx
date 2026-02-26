@@ -95,7 +95,7 @@ export const ImpactCertificates: React.FC = () => {
                   </tr>
                   <tr>
                     <td className="stat-name">Estimated Monetary Value</td>
-                    <td className="stat-value">${totalValue.toLocaleString()}</td>
+                    <td className="stat-value">₹{totalValue.toLocaleString('en-IN')}</td>
                   </tr>
                   <tr>
                     <td className="stat-name">Recipients Served</td>

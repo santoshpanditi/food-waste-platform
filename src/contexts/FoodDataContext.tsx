@@ -171,7 +171,42 @@ export const FoodDataProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   const updateClaim = (claimId: string, status: FoodClaim['status']) => {
-    setClaims(claims.map(c => c.id === claimId ? { ...c, status } : c));
+    const targetClaim = claims.find(c => c.id === claimId);
+
+    setClaims(prevClaims => prevClaims.map(c => c.id === claimId ? { ...c, status } : c));
+    setListings(prevListings => prevListings.map(listing => {
+      if (!listing.claims || listing.claims.length === 0) {
+        return listing;
+      }
+
+      const updatedClaims = listing.claims.map(c => c.id === claimId ? { ...c, status } : c);
+
+      let nextStatus = listing.status;
+      if (status === 'approved') {
+        nextStatus = 'claimed';
+      } else if (status === 'completed') {
+        nextStatus = 'distributed';
+      } else if (status === 'rejected') {
+        const hasActive = updatedClaims.some(c => c.status === 'approved' || c.status === 'pending');
+        if (!hasActive && listing.status === 'claimed') {
+          nextStatus = 'available';
+        }
+      }
+
+      return { ...listing, claims: updatedClaims, status: nextStatus };
+    }));
+
+    if (status === 'approved' && targetClaim && !deliveries.some(d => d.claimId === claimId)) {
+      const delivery: DeliveryTracking = {
+        id: Date.now().toString(),
+        claimId,
+        status: 'scheduled',
+        distance: 0,
+        proofPhotos: [],
+        pickupTime: new Date().toISOString()
+      };
+      setDeliveries(prevDeliveries => [...prevDeliveries, delivery]);
+    }
   };
 
   const createDelivery = (claimId: string, distance: number) => {

@@ -16,7 +16,7 @@ export const Navigation: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <span>�🇳 BharatSecure - Food Waste Reduction</span>
+          <span>Food Waste Reduction</span>
         </div>
 
         <div className="navbar-menu">

@@ -14,8 +14,8 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
-        <h1>स्वागत है (Welcome), {user?.name}! 🇮🇳</h1>
-        <p>Role: <strong>{user?.role?.toUpperCase()}</strong> | Platform: BharatSecure</p>
+        <h1>Welcome, {user?.name}</h1>
+        <p>Role: <strong>{user?.role?.toUpperCase()}</strong> </p>
       </div>
 
       <div className="stats-grid">

@@ -1,13 +1,13 @@
 /* Navigation Bar */
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
   color: white;
   padding: 0;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 20px rgba(84, 244, 75, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 3px solid #764ba2;
+  border-bottom: 3px solid #74f168;
 }
 
 .navbar-container {

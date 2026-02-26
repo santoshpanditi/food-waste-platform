@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import '../styles/Pages.css';
 
 export const DonorListings: React.FC = () => {
-  const { listings, updateListing, deleteListing } = useFoodData();
+  const { listings, updateListing, deleteListing, updateClaim } = useFoodData();
   const { user } = useAuth();
   const [selectedListing, setSelectedListing] = useState<FoodListing | null>(null);
   const [editStatus, setEditStatus] = useState<FoodListing['status'] | null>(null);
@@ -21,6 +21,10 @@ export const DonorListings: React.FC = () => {
     if (confirm('Are you sure you want to delete this listing?')) {
       deleteListing(listingId);
     }
+  };
+
+  const handleClaimDecision = (claimId: string, status: 'approved' | 'rejected') => {
+    updateClaim(claimId, status);
   };
 
   return (
@@ -96,6 +100,22 @@ export const DonorListings: React.FC = () => {
                     <div key={claim.id} className="claim-item">
                       <p><strong>{claim.recipientName}</strong> - {claim.quantity} {selectedListing.unit}</p>
                       <p>Status: <span className={`status-badge status-${claim.status}`}>{claim.status}</span></p>
+                      {claim.status === 'pending' && (
+                        <div className="claim-actions" style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+                          <button
+                            className="btn-small btn-primary"
+                            onClick={() => handleClaimDecision(claim.id, 'approved')}
+                          >
+                            Approve
+                          </button>
+                          <button
+                            className="btn-small btn-danger"
+                            onClick={() => handleClaimDecision(claim.id, 'rejected')}
+                          >
+                            Reject
+                          </button>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

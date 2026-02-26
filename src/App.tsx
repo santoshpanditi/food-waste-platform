@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { FoodDataProvider } from './contexts/FoodDataContext';
+import { ToastProvider } from './providers/ToastProvider';
 import { AuthPage } from './components/AuthPage';
 import { Navigation } from './components/Navigation';
 import { Dashboard } from './pages/Dashboard';
@@ -153,13 +154,15 @@ const AppContent: React.FC = () => {
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <FoodDataProvider>
-          <AppContent />
-        </FoodDataProvider>
-      </AuthProvider>
-    </Router>
+    <ToastProvider>
+      <Router>
+        <AuthProvider>
+          <FoodDataProvider>
+            <AppContent />
+          </FoodDataProvider>
+        </AuthProvider>
+      </Router>
+    </ToastProvider>
   );
 }
 
